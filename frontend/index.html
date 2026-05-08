@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ЛР1 - Каталог ресурсів</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Каталог навчальних ресурсів</h1>
+            <p>Виконав: Вадим Голіков, група КБ-14/1 (Варіант 5)</p>
+        </header>
+
+        <main class="layout">
+            <section id="create-section" class="sidebar">
+                <h2>Додати ресурс</h2>
+                <form id="resourceForm">
+                    <div class="field">
+                        <label for="titleInput">Назва ресурсу</label>
+                        <input id="titleInput" type="text" placeholder="Введіть назву" />
+                        <p class="error-text" id="titleError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="urlInput">URL-посилання</label>
+                        <input id="urlInput" type="text" placeholder="https://..." />
+                        <p class="error-text" id="urlError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="typeSelect">Тип ресурсу</label>
+                        <select id="typeSelect">
+                            <option value="">Оберіть тип</option>
+                            <option value="Article">Стаття</option>
+                            <option value="Video">Відео</option>
+                            <option value="Course">Курс</option>
+                            <option value="Book">Книга</option>
+                        </select>
+                        <p class="error-text" id="typeError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="descInput">Опис</label>
+                        <textarea id="descInput" rows="3" placeholder="Короткий опис..."></textarea>
+                        <p class="error-text" id="descError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="authorInput">Автор</label>
+                        <input id="authorInput" type="text" placeholder="ПІБ або назва організації" />
+                        <p class="error-text" id="authorError"></p>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="submit">Додати</button>
+                        <button type="button" id="resetBtn">Очистити</button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="list-section" class="content">
+                <h2>Список ресурсів</h2>
+                <table id="itemsTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th id="sortNaz" style="cursor: pointer; color: #0056b3; text-decoration: underline;">Назва </th>
+                            <th id="sortUrl" style="cursor: pointer; color: #0056b3; text-decoration: underline;">URL </th>
+                            <th>Тип</th>
+                            <th>Автор</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsTableBody">
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
