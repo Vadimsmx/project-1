@@ -1,9 +1,17 @@
 // src/server.js
 const { app } = require("./app");
+const { initDb } = require("./db/initDb");
 
 const PORT = process.env.PORT || 3000;
 
-// У 2-й лабі ми використовуємо лише синхронний запуск сервера без ініціалізації БД
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+async function bootstrap() {
+    await initDb();
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
+
+bootstrap().catch((err) => {
+    console.error("Fatal startup error:", err);
+    process.exit(1);
 });
