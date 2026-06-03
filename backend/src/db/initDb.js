@@ -1,4 +1,3 @@
-// src/db/initDb.js
 const { run } = require("./dbClient");
 
 async function initDb() {
@@ -18,7 +17,7 @@ async function initDb() {
             id INTEGER PRIMARY KEY,
             userId INTEGER NOT NULL,
             title TEXT NOT NULL,
-            body TEXT NOT NULL,
+            content TEXT NOT NULL, -- Змінено з body на content, щоб підходило під валідацію
             createdAt TEXT NOT NULL,
             FOREIGN KEY (userId) REFERENCES Users (id) ON DELETE CASCADE
         );
@@ -29,14 +28,20 @@ async function initDb() {
             id INTEGER PRIMARY KEY,
             postId INTEGER NOT NULL,
             userId INTEGER NOT NULL,
-            body TEXT NOT NULL,
+            body TEXT NOT NULL, -- Для коментарів залишаємо body, як і було
             createdAt TEXT NOT NULL,
             FOREIGN KEY (postId) REFERENCES Posts (id) ON DELETE CASCADE,
             FOREIGN KEY (userId) REFERENCES Users (id) ON DELETE RESTRICT
         );
     `);
 
-    console.log("DB schema initialized");
+    const now = new Date().toISOString();
+    await run(`
+        INSERT OR IGNORE INTO Users (id, email, name, createdAt)
+        VALUES (1, 'vadym@example.com', 'Вадим', '${now}');
+    `);
+
+    console.log("DB schema initialized & default user verified/created");
 }
 
 module.exports = { initDb };

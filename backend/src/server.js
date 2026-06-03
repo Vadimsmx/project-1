@@ -4,6 +4,12 @@ const { initDb } = require("./db/initDb");
 
 const PORT = process.env.PORT || 3000;
 
+const cors = require('cors'); 
+
+app.use(cors({
+    origin: 'http://localhost:5500' 
+}));
+
 async function bootstrap() {
     await initDb();
     app.listen(PORT, () => {

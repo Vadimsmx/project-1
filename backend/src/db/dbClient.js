@@ -1,31 +1,20 @@
-// src/db/dbClient.js
 const { db } = require("./db");
 
-function all(sql) {
+function all(sql, params = []) {
     return new Promise((resolve, reject) => {
-        db.all(sql, (err, rows) => (err ? reject(err) : resolve(rows)));
+        db.all(sql, params, (err, rows) => (err ? reject(err) : resolve(rows)));
     });
 }
 
-function get(sql) {
+function get(sql, params = []) {
     return new Promise((resolve, reject) => {
-        db.get(sql, (err, row) => (err ? reject(err) : resolve(row)));
+        db.get(sql, params, (err, row) => (err ? reject(err) : resolve(row)));
     });
 }
 
-function run(sql) {
+function run(sql, params = []) {
     return new Promise((resolve, reject) => {
-        db.run(sql, function (err) {
-            if (err) return reject(err);
-            resolve({ lastID: this.lastID, changes: this.changes });
-        });
-    });
-}
-
-module.exports = { all, get, run };
-function run(sql) {
-    return new Promise((resolve, reject) => {
-        db.run(sql, function (err) {
+        db.run(sql, params, function (err) {
             if (err) return reject(err);
             resolve({ lastID: this.lastID, changes: this.changes });
         });
