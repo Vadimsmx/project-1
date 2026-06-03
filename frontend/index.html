@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="buttons">
-                        <button type="submit">Додати</button>
+                        <button type="submit" id="addBtn">Додати</button>
                         <button type="button" id="resetBtn">Очистити</button>
                     </div>
                 </form>
@@ -63,14 +63,18 @@
 
             <section id="list-section" class="content">
                 <h2>Список ресурсів</h2>
+                
+                <div id="listStatus" style="margin-bottom: 15px; font-weight: bold;"></div>
+
                 <table id="itemsTable">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th id="sortNaz" style="cursor: pointer; color: #0056b3; text-decoration: underline;">Назва </th>
-                            <th id="sortUrl" style="cursor: pointer; color: #0056b3; text-decoration: underline;">URL </th>
+                            <th id="sortNaz" style="cursor: pointer; color: #0056b3; text-decoration: underline;">Назва</th>
+                            <th id="sortUrl" style="cursor: pointer; color: #0056b3; text-decoration: underline;">URL</th>
                             <th>Тип</th>
                             <th>Автор</th>
+                            <th>Дії</th>
                         </tr>
                     </thead>
                     <tbody id="itemsTableBody">

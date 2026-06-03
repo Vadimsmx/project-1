@@ -76,9 +76,35 @@ section {
 
 button {
     padding: 8px 16px;
-    border: 1px solid #888;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: bold;
+    border: none;
+    transition: opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+
+
+#resetBtn {
+    background-color: #6c757d;
+    color: white;
+}
+
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 4px 8px;
+    font-size: 14px;
 }
 
 table {
