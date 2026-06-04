@@ -43,3 +43,11 @@ $userBytes = [System.Text.Encoding]::UTF8.GetBytes($userBody)
 
 Invoke-RestMethod -Uri "http://localhost:3000/api/users" -Method Post -Body $userBytes -ContentType "application/json" | ConvertTo-Json -Depth 5
 
+
+
+ДЛЯ ЛАБОРАТОРНОЇ 5:
+Для створення поста: curl -X POST http://localhost:3000/api/posts \
+-H "Content-Type: application/json" \
+-H "X-Demo-UserId: 1" \
+-d '{"userId":1,"title":"Тестовий пост","body":"Вміст захищеного поста","content":"Вміст захищеного поста"}'
+Для перевірки списку: curl http://localhost:3000/api/posts
